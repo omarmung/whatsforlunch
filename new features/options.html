@@ -1,0 +1,263 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Bootstrap, from Twitter</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+	
+		<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+		<!--[if lt IE 9]>
+		  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	
+		<!-- Le styles -->
+		<link href="../1.4.0/bootstrap.css" rel="stylesheet">
+		<style type="text/css">
+		  /* Override some defaults */
+		  html, body {
+			background-color: #eee;
+		  }
+		  body {
+			padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
+		  }
+		  .container > footer p {
+			text-align: center; /* center align it with the container */
+		  }
+		  .container {
+			width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
+		  }
+	
+		  /* The white background content wrapper */
+		  .content {
+			background-color: #fff;
+			padding: 20px;
+			margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+			-webkit-border-radius: 0 0 6px 6px;
+			   -moz-border-radius: 0 0 6px 6px;
+					border-radius: 0 0 6px 6px;
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+			   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+					box-shadow: 0 1px 2px rgba(0,0,0,.15);
+		  }
+	
+		  /* Page header tweaks */
+		  .page-header {
+			background-color: #f5f5f5;
+			padding: 20px 20px 10px;
+			margin: -20px -20px 20px;
+		  }
+	
+		  /* Give a quick and non-cross-browser friendly divider */
+		  .content .span4 {
+			margin-left: 0;
+			padding-left: 19px;
+			border-left: 1px solid #eee;
+		  }
+	
+		  .topbar .btn {
+			border: 0;
+		  }
+	
+		</style>
+	
+		<!-- Le fav and touch icons -->
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+		<!-- Le Bootstrap -->
+		<link rel="stylesheet" href="styles/bootstrap.css" type="text/css">
+	
+	  <script type="text/javascript" id="__bmn_injectSubmitHookFn__">function __bmn_injectSubmitHook__() {
+			Array.prototype.forEach.call(arguments, function(i) {
+				var form = document.forms[i], submitFunction = form.submit;
+				if (!submitFunction || (typeof (submitFunction) == "function" && submitFunction.name != "__bmn_submitHook__")) {
+					form.submit = function __bmn_submitHook__() {					
+						var submitEvent = document.createEvent('Event');
+						submitEvent.initEvent('submit', true, true);
+						form.dispatchEvent(submitEvent);
+						return submitFunction ? submitFunction.call(form) : true;
+					};
+				}
+			});
+		}</script><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script>
+		
+
+		<!-- Le jQuery -->
+		<script src='scripts/jquery-1.6.1.min.js'></script>
+	
+		<!-- Le Chrome Options localStorage Code http://code.google.com/chrome/extensions/options.html -->
+		<script type="text/javascript">
+	
+		// Saves options to localStorage.
+			function save_options() {
+			  var select = document.getElementById("color");
+			  var color = select.children[select.selectedIndex].value;
+			  localStorage["favorite_color"] = color;
+			
+			  // Update status to let user know options were saved.
+			  var status = document.getElementById("status");
+			  status.innerHTML = "Options Saved.";
+			  setTimeout(function() {
+				status.innerHTML = "";
+			  }, 750);
+			}
+			
+			// Restores select box state to saved value from localStorage.
+			function restore_options() {
+			  var favorite = localStorage["favorite_color"];
+			  if (!favorite) {
+				return;
+			  }
+			  var select = document.getElementById("color");
+			  for (var i = 0; i < select.children.length; i++) {
+				var child = select.children[i];
+				if (child.value == favorite) {
+				  child.selected = "true";
+				  break;
+				}
+			  }
+			}
+
+
+			// grabs version number from manifest.json // can i just grab this direcly instead?
+			$(document).ready(function(){
+				//grab
+				$.getJSON(chrome.extension.getURL("manifest.json"), function(json) 
+				{
+					//put
+					$('#version').html(json.version);
+				});
+			});
+			
+			</script>
+			
+	</head>
+
+	<body onload="restore_options()">
+	
+		<div class="topbar">
+		  <div class="fill">
+			<div class="container">
+			  <a class="brand" href="#">What's For Lunch? </a>
+			  <ul class="nav">
+				<li class="active"><a href="http://go/whatsforlunch" title="Check Birdfeed Confluence Page For Newest Version">Birdfeed <span id="version"></span></a></li>
+			  </ul>
+			  <!--form action="" class="pull-right">
+				<input class="input-small" type="text" placeholder="Username">
+				<input class="input-small" type="password" placeholder="Password">
+				<button class="btn" type="submit">Sign in</button>
+			  </form-->
+			</div>
+		  </div>
+		</div>
+	
+		<div class="container">
+	
+		  <!--div class="content"-->
+			<div class="page-header">
+			  <h1>What's For Lunch? </h1>
+			  
+			</div>
+			<div class="row">
+			  <div class="span16">
+				<h3>Menu Item Alerts <small>Corporate Lunch at the Absolute Limit</small></h3>				
+				
+
+					<form>
+						<fieldset>
+						  <!--legend>OK.</legend-->
+				
+						  <div class="clearfix">
+							<label for="xlInput">I love to eat:</label>
+							<div class="input">
+							  <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text">
+							</div>
+						  </div><!-- /clearfix -->
+						  
+						  
+						  <div class="clearfix">
+							<label for="xlInput">I don't care for:</label>
+							<div class="input">
+							  <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text">
+							</div>
+						  </div><!-- /clearfix -->          
+						  
+						  <div class="clearfix">
+							<label for="normalSelect">Select</label>
+							<div class="input">
+								<select name="normalSelect" id="color">
+									 <option value="red">red</option>
+									 <option value="green">green</option>
+									 <option value="blue">blue</option>
+									 <option value="yellow">yellow</option>
+								</select>
+							</div>
+						  </div><!-- /clearfix -->
+				   
+				   
+				   
+				 
+						  <div class="clearfix">
+							<label id="optionsRadio">List of options</label>
+							<div class="input">
+							  <ul class="inputs-list">
+								<li>
+								  <label>
+									<input type="radio" checked="" name="optionsRadios" value="option1">
+									<span>Option one is this and that—be sure to include why it’s great</span>
+								  </label>
+								</li>
+								<li>
+								  <label>
+									<input type="radio" name="optionsRadios" value="option2">
+									<span>Option two can is something else and selecting it will deselect options 1</span>
+								  </label>
+								</li>
+							  </ul>
+							</div>
+						  </div><!-- /clearfix -->
+						  <div class="actions">
+							<input onclick="save_options()" type="submit" class="btn primary" value="Save changes">&nbsp;<button type="reset" class="btn">Cancel</button>
+				
+						  </div>
+						</fieldset>
+					  </form>
+
+
+          </div>
+
+
+          <!--div class="span4">
+            <h3>Secondary content</h3>
+            
+
+            
+          </div-->
+        <!--/div-->
+      </div>
+
+      <footer>
+		<span id="sig">
+			<img src="images/favicon.png" id="logo" style="padding-right:2px;" onclick="open_item(\'http://www.twitter.com/omarmung/\'); window.close();" />
+			<span style="padding-right:2px;color:#8c1201" onclick="open_item(\'http://www.twitter.com/omarmung/\'); window.close();"> Omar Mung</span>
+			<br clear="all" />
+		</span>
+      </footer>
+
+    </div> <!-- /container -->
+
+  
+		<!-- google analytics -->
+		<script type="text/javascript">
+			 var _gaq = _gaq || [];
+			 _gaq.push(['_setAccount', 'UA-28757322-1']);
+			 _gaq.push(['_trackPageview']);
+			
+			 (function() {
+			   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			   ga.src = 'https://ssl.google-analytics.com/ga.js';
+			   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			 })();
+		</script>
+</body></html>

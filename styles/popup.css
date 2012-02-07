@@ -1,0 +1,25 @@
+.containerpopup {
+	width: 340px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 10px;
+	zoom: 1;
+}
+.container-fluidpopup {
+	position: relative;
+	min-width: 340px;
+	padding-left: 20px;
+	padding-right: 20px;
+	zoom: 1;
+}
+.sig {
+	margin-top: 15px;
+}
+
+h2grey {
+	font-size: 24px;
+	line-height: 36px;
+	color: #BFBFBF;
+}

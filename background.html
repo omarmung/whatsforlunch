@@ -1,0 +1,130 @@
+<html>
+	<head>
+		<script src='scripts/jquery-1.6.1.min.js'></script>
+		<script src="scripts/parse.js"></script>
+
+		<script>
+		
+		
+			// vars
+			var i = 0; // set counter for the badge
+			var url = 'http://www.cafebonappetit.com/rss/menu/403'; // set xml fetch url
+			var data; // set var that will pass xml feed between pages
+	
+	
+	// not finished, gets day
+	function edit_day(data) 
+	{
+		  var select = document.getElementById("color");
+		  var color = select.children[select.selectedIndex].value;
+	}
+			
+
+
+	// get saved value from localStorage
+	function restore_options() {
+	  var favorite = localStorage["favorite_color"];
+	  if (!favorite) {
+		return;
+	  }
+	  var select = document.getElementById("color");
+	  for (var i = 0; i < select.children.length; i++) {
+		var child = select.children[i];
+		if (child.value == favorite) {
+		  child.selected = "true";
+		  break;
+		}
+	  }
+	}
+
+			
+			//fetch feed at url, if readyState is 4 AND status is 200, calls callback with returned data, if not calls callback with null
+			function fetch_feed(callback) 
+			{
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function () 
+				{
+				  if (xhr.readyState == 4) 
+				  {
+					if (xhr.status == 200) 
+					{
+						data = xhr.responseText; // set globally was set locally before...
+						chrome.browserAction.setBadgeText({text:String("")});
+						callback(data);
+					} 
+					else 
+					{
+						// timeout action? via ... var t=setTimeout("timeMsg()",3000);
+						// chrome.browserAction.setBadgeText({text:String("…")});
+						callback(null);
+					}
+				//chrome.browserAction.setBadgeText({text:String("?")});
+
+				  }
+				}
+	
+				// Note that any URL fetched here must be matched by a permission in
+				// the manifest.json file!
+				xhr.open('GET', url, true);
+				xhr.send();
+			}
+
+			
+			// waiting, then handing to fetch_feed with itself as a callback.
+			function alwaysbeWaiting(data)
+			{			
+	
+				// counter/badge alert
+				// i++;
+				// chrome.browserAction.setBadgeText({text:String(i)});  // set the badge
+				
+				// timing out, then playing hot potato with fetch_feed()
+				var t=setTimeout("fetch_feed(alwaysbeWaiting())", 3600000); // 1 hr: 3600000  // 30 secs: 30000
+			}
+	
+	
+			// called by the listener, is passed request, sender?, and callback
+			// if request is fetch_current, bounce current data to display_stories() in popup.html
+			// if request is fetch_feed, then call fetch_feed(), passing url and callback
+			function onRequest(request, sender, callback)
+			{
+				if (request.action == 'fetch_current') 
+				{
+					// display_stories(data); // go straight back to popup?						
+						callback(data);
+				}
+				if (request.action == 'fetch_feed') 
+				{
+					// 
+					fetch_feed(callback);
+				}
+			}
+	
+			
+			// Start up the listener, passing to onRequest
+			chrome.extension.onRequest.addListener(onRequest);			
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</script>
+	</head>
+	<body>
+	
+		<script>
+			fetch_feed(alwaysbeWaiting());		
+		</script>
+	
+	</body>
+</html>

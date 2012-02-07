@@ -1,0 +1,19 @@
+{
+	"name": "What's For Lunch?",
+	"version": "1.0",
+	"description": "BirdFeed",
+	"icons": 
+			{ 
+			"16" : "images/icon.png",
+			"48" : "images/48.png",
+			"128" : "images/128.png"},
+	"homepage_url": "http://go/whatsforlunch",
+	"background_page": "background.html",
+	"permissions": ["http://www.cafebonappetit.com/*"],
+	"browser_action": 
+					{
+					"default_icon": "images/icon.png", 
+					"default_title": "What's for Lunch?",      
+					"default_popup": "popup.html"       
+  					}
+}

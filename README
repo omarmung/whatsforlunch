@@ -1,0 +1,22 @@
+'What's For Lunch?' Totally Official Readme File
+
+Hi there. This was my first chrome extension. It's based heavily on this LifeHacker how-to article: 
+http://lifehacker.com/5857721/how-to-build-a-chrome-extension
+and uses http://go/bootstrap for styling. It's not really finished yet,
+but I'll add as I go. Hope you like it.
+
+@omarmung - Jan. 2012 #hackweek
+
+
+About 'What's For Lunch?'
+It pulls the XML feed linked from the Twitter Cafe Bon Appetit page:
+The site: http://www.cafebonappetit.com/menu/your-cafe/twitter/cafes/details/403/twitter
+XML feed: http://www.cafebonappetit.com/rss/menu/403
+(And the XML feed doesn't include such luxuries as vegetarian info or separating the daily
+into meals)
+
+Incomplete Features
+-Match/alert on keyword (i.e. "Fried Chicken" -> Yum!, "Live Snakes" -> Nein.)
+-Options page for:
+  -keyword blacklist
+  -keyword whitelist
