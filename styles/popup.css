@@ -49,3 +49,7 @@ p {
 .label, .badge {
 	text-shadow:none;
 }
+
+a {
+  color:#8c1201;
+}

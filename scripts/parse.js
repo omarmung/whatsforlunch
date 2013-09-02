@@ -65,13 +65,3 @@ function is_datetext_today(datetext) {
   }
 }
 
-
-
-function open_item(url) {
-  chrome.tabs.create({
-    url: url
-  });
-  chrome.browserAction.setBadgeText({
-    text: ''
-  });
-}

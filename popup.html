@@ -5,7 +5,6 @@
     <script src="scripts/parse.js"></script>
     <script src="scripts/popup.js"></script>
     
-    <!--link rel="stylesheet" href="styles/post.css" type="text/css" /-->
     <link rel="stylesheet" href="styles/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="styles/popup.css" type="text/css">  
   </head>
@@ -15,24 +14,23 @@
       <!-- Example row of columns -->
         <div class="row">
           <div class="span6" id="controls">
-            <a href="#" id="refetch" style="float:right;margin-right:0;" class="btn small">Refresh</a>
-            <span><a href="#" style="color:#8c1201" onclick="open_item('http://go/whatsforlunch'); window.close();">What's For Lunch?</a></span>
+            <a href="#" id="refetch_button" style="float:right;margin-right:0;" class="btn small">Refresh</a>
+            <span><a id="go_whatsforlunch_link" href="#">What's For Lunch?</a></span>
           </div>
           <div class="span6" id="popup"></div>  
           <div class="span6 sig" id="">
-            <span>
+            <div>
               <!-- Icons -->
               
-              <span> By <a href="#" style="color:#8c1201" onclick="open_item('http://www.twitter.com/omarmung'); window.close();">@omarmung</a> &amp; <a href="#" style="color:#8c1201" onclick="open_item('http://www.twitter.com/clove'); window.close();">@clove</a> | #hackweek July 2012</span><br/>
-              <span>RSS appropriated from <a href="#" style="color:#8c1201" onclick="open_item('http://www.cafebonappetit.com/menu/your-cafe/twitter/cafes/details/403/weekly-menu'); window.close();"> go/lunch</a></span>						
-              <span>RSS appropriated from <a href="#" style="color:#8c1201" onclick="open_item('http://www.cafebonappetit.com/menu/your-cafe/twitter/cafes/details/403/weekly-menu'); window.close();"> go/lunch</a> | #hackweek Jan 2012</span>
+              <span>By <a id="omarmung_link" href="#" >@omarmung</a>, <a id="clove_link" href="#">@clove</a> &amp; <a id="niels_link" href="#" >@niels</a></span><br/>
+              <span>RSS appropriated from <a id="bonappetit_link" href="#" > go/lunch</a> | #hackweek Jan 2012</span>
               <!-- Follow Button -->
               <!--a href="https://twitter.com/omarmung" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @omarmung</a>
               <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script-->          
             
               <!-- options page link for when there are keyword searches and an options page-->
               <!--  span onclick="open_item(\'options.html\'); window.close();">Options</span><br clear="all" /-->
-            </span>
+            </div>
           </div>
         </div>        
       </div>

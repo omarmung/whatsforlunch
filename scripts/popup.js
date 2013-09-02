@@ -97,23 +97,47 @@ function display_stories(lunchStorageResult, refetch) {
 
 function re_render_from_storage() {
   chrome.storage.local.get(lunchInfo, function(storageResult) {
-    display_stories(storageResult);
+    display_stories(storageResult, true);
   });
 }
 
+function open_item(url) {
+  chrome.tabs.create({
+    url: url
+  });
+  chrome.browserAction.setBadgeText({
+    text: ''
+  });
+  window.close();
+}
+
+function addClickEvent(id, handler) {
+  document.getElementById(id).addEventListener('click', handler);
+}
+function addLink(id, link) {
+  addClickEvent(id, function() {
+    open_item(link);
+  });
+}
+
+
 function bindUiElementActions() {
-  document.getElementById("refetch").addEventListener('click', re_fetch);
-  
+  addLink("go_whatsforlunch_link", "http://go/whatsforlunch");
+  addClickEvent("refetch_button", re_fetch);
+  addLink("omarmung_link", "https://twitter.com/omarmung");
+  addLink("clove_link", "https://twitter.com/clove");
+  addLink("niels_link", "https://twitter.com/niels");
+  addLink("bonappetit_link", "http://www.cafebonappetit.com/menu/your-cafe/twitter/cafes/details/403/weekly-menu");
 }
 
 
 chrome.storage.onChanged.addListener(function(changes) {
-  console.log("change detected");
   re_render_from_storage();
 });
 
 // when popup.html finishes loading, render 
 $(document).ready(function() {
+  bindUiElementActions();
   re_render_from_storage();
   re_fetch();
 });
