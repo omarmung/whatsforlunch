@@ -1,19 +1,21 @@
 {
-	"name": "What's For Lunch?",
-	"version": "1.0",
-	"description": "BirdFeed",
-	"icons": 
-			{ 
-			"16" : "images/icon.png",
-			"48" : "images/48.png",
-			"128" : "images/128.png"},
-	"homepage_url": "http://go/whatsforlunch",
-	"background_page": "background.html",
-	"permissions": ["http://www.cafebonappetit.com/*"],
-	"browser_action": 
-					{
-					"default_icon": "images/icon.png", 
-					"default_title": "What's for Lunch?",      
-					"default_popup": "popup.html"       
-  					}
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+
+  "name": "What's for Lunch?",
+  "description": "Stealing the go/lunch feed since Hackweek Jan. 2012",
+  "version": "2",
+
+  "homepage_url": "http://go/whatsforlunch",
+  "permissions": [
+    "storage", 
+    "http://legacy.cafebonappetit.com/rss/menu/403",
+    "https://ssl.google-analytics.com/ga.js"
+  ],
+  
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_title": "What's for Lunch?",
+    "default_popup": "popup.html"
+  }
 }
