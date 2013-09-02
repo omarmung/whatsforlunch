@@ -5,7 +5,11 @@
   "name": "What's for Lunch?",
   "description": "Stealing the go/lunch feed since Hackweek Jan. 2012",
   "version": "2",
-
+  "icons": {
+     "128": "images/128.png",
+     "19": "images/icon.png",
+     "48": "images/48.png"
+  },
   "homepage_url": "http://go/whatsforlunch",
   "permissions": [
     "storage", 
