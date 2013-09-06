@@ -1,19 +1,35 @@
 {
 	"name": "What's For Lunch?",
-	"version": "1.0",
-	"description": "BirdFeed",
+	"version": "1.7",
+	"description": "Why don't you eat something.",
+	"homepage_url": "http://go/WhatsForLunch",
+	"update_url": "http://go/chrome-ext/update",
 	"icons": 
 			{ 
 			"16" : "images/icon.png",
 			"48" : "images/48.png",
-			"128" : "images/128.png"},
+			"128" : "images/128.png"
+			},
 	"homepage_url": "http://go/whatsforlunch",
-	"background_page": "background.html",
-	"permissions": ["http://www.cafebonappetit.com/*"],
-	"browser_action": 
-					{
-					"default_icon": "images/icon.png", 
-					"default_title": "What's for Lunch?",      
-					"default_popup": "popup.html"       
-  					}
+    "background": { 
+			"scripts": [
+				"background.js", 
+				"scripts/jquery-1.6.1.min.js", 
+				"scripts/parse.js"
+				] 
+				},
+	"permissions": [
+				"http://www.cafebonappetit.com/*"],
+  	"browser_action": {
+			"default_icon": {                    
+			  "19": "images/icon.png",           
+			  "38": "images/icon.png"            
+			},
+			"default_title": "What's for Lunch?",
+			"default_popup": "popup.html"        
+  },
+  	"web_accessible_resources": ["scripts/popup.js", "scripts/widgets.js"],
+  	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://widgets.twimg.com/j/2/widget.js; object-src 'self'",
+    "manifest_version": 2,
+    "options_page": "options.html"
 }

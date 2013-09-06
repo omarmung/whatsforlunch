@@ -3,118 +3,8 @@
 		<!--script src="scripts/widgets.js"></script-->
 		<script src='scripts/jquery-1.6.1.min.js'></script>
 		<script src="scripts/parse.js"></script>
-			  
-		<script>
-			
-		
-			// Tell the background page what feed to fetch, what callback to run
-			function pop_it() {
-				chrome.extension.sendRequest({'action' : 'fetch_current'}, // sent to all parts of extension, for intercept by listener in the background page
-					function(response) {
-						display_stories(response, false); // false means not a refetch
-					}
-				);
-			}
-	
-	
-			// Tell the background page to refetch now, 
-			// for use when the regularly-scheduled feed didn't work
-			// or network problems, etc.
-			function re_fetch() 
-			{
-				ii = 0; // 0 is the first time through the loop, needed to clear the popup of any prior stuff
-				chrome.extension.sendRequest({'action' : 'fetch_feed'}, // sent to all parts of extension, for intercept by listener in the background page
-					function(response) {
-						display_stories(response, true); // true is a refetch
-					}
-				);
-			}
-	
+		<script src="scripts/popup.js"></script>	  
 
-			// Parse XML data passed back from the background page 
-			function display_stories(feed_data, refetch) {
-				var xml_doc = $.parseXML(feed_data);
-				$xml = $(xml_doc);
-				
-				//$('#popup').append($xml.find("title").text());       // $(this).find("title").text()) );
-				var items = $xml.find("item");
-
-				//$('#popup').append("<hr><p>Is Today " + today + "</p><br> " + "<p>Someday? " + someday.getUTCDate() + "</p>"); // find_today());
-				
-				// var days = $xml.find("title");
-				items.each(function(index, element) {
-					
-					
-					// grab the title text from each item (this is where date is kept)
-					today_title = is_datetext_today($(element).find("title").text());
-					
-					
-					// ask if the title matches today's date
-					if (today_title == true)
-					{
-					
-					// $('#popup').append(today_title);
-					// if (is_datetext_today( $(element).find("title").text() )
-					
-					var post = parse_post(element);
-					var item = '';
-					var class2 = '';
-					
-					
-					if (index >= localStorage['unread_count']) {
-						// // console.log('visited');
-						item += '<div class="post read">';
-					}
-					else {
-						item += '<div class="post">'
-						}
-					item += '<div id="' + post.id + '" class="item">\
-										<h2grey>' + post.title + '</h2grey>\
-										<span class="description">' + post.description + '</span>\
-									</div>\
-								';
-					item += '</div>';
-				// <img src="' + post.img + '" width="107" height="60" />\  ;
-				// onclick="open_item(\'' + post.url + '\');"
-				//							<a href="' + post.url + '">\
-				//
-
-					// append data if not a refetch, if refetch, clear old data
-					if (refetch == true) 		
-					{	
-						// if this is a refetch
-						// popup is already open so we need to:
-						// clear the div the first time through
-						// then append data the rest of the cycles
-						// note: i was so tired when i did this
-						if (ii == 0) 		
-						{	
-							pinwheel = '<span class="label notice">Current</span>'
-							pp = $('#popup').html(pinwheel);
-							ii++
-						}
-
-						// replace data
-						p = $('#popup').append(item);
-
-					} 
-					else 
-					{	
-						// for regular fetch
-						// popup is opening for the first time
-						// append data
-						p = $('#popup').append(item);
-					}
-				
-				}
-					if (today_title == "delorean")
-					{
-					$('#popup').append("<p>Error &#8734;: You Are A Muthafuckin' Time Traveller</p>");
-					}
-				});				
-			}
-			
-		</script>
 		<!--link rel="stylesheet" href="styles/post.css" type="text/css" /-->
 		<link rel="stylesheet" href="styles/bootstrap.css" type="text/css">
 		<link rel="stylesheet" href="styles/popup.css" type="text/css">
@@ -126,32 +16,17 @@
 			<!-- Example row of columns -->
 			<div class="row">
 				<div class="span6" id="controls">
-					<a href="#" id="refetch" style="float:right;margin-right:0;" class="btn small" onclick="re_fetch();">Refresh</a>
-					<span><a href="#" style="color:#8c1201" onclick="open_item('http://go/whatsforlunch'); window.close();">What's For Lunch?</a></span>
+					<a href="#" id="refetch" style="float:right;margin-right:0;" class="btn small">Refresh</a>
+					<span><a href="#" id="golink" style="color:#8c1201">What's For Lunch?</a></span>
 				</div>
-				<div class="span6" id="popup">      	
-					<script>
-						// when popup.html finishes loading, tell the background page
-						// to hand over the latest downloaded menu xml
-						$(document).ready(function() 
-						{							
-							pop_it(); // grab data from background page/xml fetch process
-						});
-					</script>
-				
-				</div>	
+				<div class="span6" id="popup"></div>	
 				<div class="span6 sig" id="">
 				  <span>
 						<!-- Icons -->
 							
-						<span>RSS appropriated from <a href="#" style="color:#8c1201" onclick="open_item('http://www.cafebonappetit.com/menu/your-cafe/twitter/cafes/details/403/weekly-menu'); window.close();"> go/lunch</a> | #hackweek Jan 2012</span>
-						
-						<!-- Follow Button -->
-						<!--a href="https://twitter.com/omarmung" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @omarmung</a>
-						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script-->					
-						
-						<!-- options page link for when there are keyword searches and an options page-->
-						<!--  span onclick="open_item(\'options.html\'); window.close();">Options</span><br clear="all" /-->
+
+						<span>#hackweek July 1969 <a href="#" id="omarmung" style="color:#8c1201"">@omarmung</a> &amp; <a href="#" id = "clove" style="color:#8c1201">@clove</a></span><br/>
+						<span>RSS appropriated from <a href="#" id="cafebonappetit" style="color:#8c1201">go/lunch</a></span>						
 				  </span>
 			</div>				
 			
@@ -164,43 +39,10 @@
 		  
 		</div>
 		
-		<div style="margin-left:5px;margin-right:5px;padding-bottom:10px">
+		<div id="tweetbox" style="margin-left:5px;margin-right:5px;padding-bottom:10px">
 
-			  <span class="">
-			  		<!-- Icons -->
-						
-		
-					<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
-					<script>
-					new TWTR.Widget({
-					  version: 2,
-					  type: 'profile',
-					  rpp: 4,
-					  interval: 30000,
-					  width: 'auto',
-					  height: 75,
-					  theme: {
-						shell: {
-						  background: '#ffffff',
-						  color: '#404040'
-						},
-						tweets: {
-						  background: '#ffffff',
-						  color: '#404040',
-						  links: '#468847'
-						}
-					  },
-					  features: {
-						scrollbar: true,
-						loop: false,
-						live: true,
-						behavior: 'all'
-					  }
-					}).render().setUser('omarmung').start();
-					</script>
-
+			  <span id="embed" class="">		
 			  </span>
-
 		</div>
 		
 		<!-- google analytics -->
