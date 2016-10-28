@@ -1,4 +1,5 @@
 <html>
+<<<<<<< HEAD
 	<head>
 		<!--script src="scripts/widgets.js"></script-->
 		<script src='scripts/jquery-1.6.1.min.js'></script>
@@ -59,4 +60,80 @@
 		</script>
 
 	</body>
+=======
+  <head>
+    <!--script src="scripts/widgets.js"></script-->
+    <script src="scripts/jquery-2.0.3.min.js"></script>
+    <script src="scripts/parse.js"></script>
+    <script src="scripts/popup.js"></script>
+    
+    <link rel="stylesheet" href="styles/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="styles/popup.css" type="text/css">  
+  </head>
+  <body>
+    <div class="containerpopup">
+      <div class="content">
+      <!-- Example row of columns -->
+        <div class="row">
+          <div class="span6" id="controls">
+            <a href="#" id="refetch_button" style="float:right;margin-right:0;" class="btn small">Refresh</a>
+            <span><a id="go_whatsforlunch_link" href="#">What's For Lunch?</a></span>
+          </div>
+          <div class="span6" id="popup"></div>  
+          <div class="span6 sig" id="">
+            <div>
+              <!-- Icons -->
+              
+              <span>By <a id="omarmung_link" href="#" >@omarmung</a>, <a id="clove_link" href="#">@clove</a> &amp; <a id="niels_link" href="#" >@niels</a></span><br/>
+              <span>RSS appropriated from <a id="bonappetit_link" href="#" > go/lunch</a> | #hackweek Jan 2012</span>
+              <!-- Follow Button -->
+              <!--a href="https://twitter.com/omarmung" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @omarmung</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script-->          
+            
+              <!-- options page link for when there are keyword searches and an options page-->
+              <!--  span onclick="open_item(\'options.html\'); window.close();">Options</span><br clear="all" /-->
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+    
+    <div style="margin-left:5px;margin-right:5px;padding-bottom:10px">
+      <span class="">
+        <!-- Icons -->
+        <!--script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script-->
+        <!--script>
+          new TWTR.Widget({
+            version: 2,
+            type: 'profile',
+            rpp: 4,
+            interval: 30000,
+            width: 'auto',
+            height: 75,
+            theme: {
+            shell: {
+              background: '#ffffff',
+              color: '#404040'
+            },
+            tweets: {
+              background: '#ffffff',
+              color: '#404040',
+              links: '#468847'
+            }
+            },
+            features: {
+            scrollbar: true,
+            loop: false,
+            live: true,
+            behavior: 'all'
+            }
+          }).render().setUser('omarmung').start();
+       </script -->
+
+      </span>
+    </div>
+    <!-- google analytics -->
+    <script src="scripts/ga.js"></script>
+  </body>
+>>>>>>> 25a5a5124f91f9524cee04106a4e22032d33316c
 </html>

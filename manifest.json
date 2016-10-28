@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"name": "What's For Lunch?",
 	"version": "1.7",
 	"description": "Why don't you eat something.",
@@ -32,4 +33,29 @@
   	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://widgets.twimg.com/j/2/widget.js; object-src 'self'",
     "manifest_version": 2,
     "options_page": "options.html"
+=======
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+
+  "name": "What's for Lunch?",
+  "description": "Stealing the go/lunch feed since Hackweek Jan. 2012",
+  "version": "2",
+  "icons": {
+     "128": "images/128.png",
+     "19": "images/icon.png",
+     "48": "images/48.png"
+  },
+  "homepage_url": "http://go/whatsforlunch",
+  "permissions": [
+    "storage", 
+    "http://legacy.cafebonappetit.com/rss/menu/403",
+    "https://ssl.google-analytics.com/ga.js"
+  ],
+  
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_title": "What's for Lunch?",
+    "default_popup": "popup.html"
+  }
+>>>>>>> 25a5a5124f91f9524cee04106a4e22032d33316c
 }

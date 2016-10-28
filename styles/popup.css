@@ -50,6 +50,11 @@ p {
 	text-shadow:none;
 }
 
+<<<<<<< HEAD
 .favorite {
 	color: red;
+=======
+a {
+  color:#8c1201;
+>>>>>>> 25a5a5124f91f9524cee04106a4e22032d33316c
 }
